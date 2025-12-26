@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Text } from 'react-native';
 
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import Animated, {
@@ -7,7 +7,7 @@ import Animated, {
   withSpring,
 } from 'react-native-reanimated';
 
-export default function Ball() {
+export default function RecipeCard() {
   const isPressed = useSharedValue(false);
   const offset = useSharedValue({ x: 0, y: 0 });
 
@@ -21,11 +21,16 @@ export default function Ball() {
         x: e.translationX + start.value.x,
         y: e.translationY + start.value.y,
       };
+      console.log('Offset:', offset.value.x); // This will log (but may be slow)
     })
     .onEnd(() => {
+      offset.value = {
+        x: 0,
+        y: 0,
+      };
       start.value = {
-        x: offset.value.x,
-        y: offset.value.y,
+        x: 0,
+        y: 0,
       };
     })
     .onFinalize(() => {
@@ -37,24 +42,32 @@ export default function Ball() {
       transform: [
         { translateX: offset.value.x },
         { translateY: offset.value.y },
-        { scale: withSpring(isPressed.value ? 1.2 : 1) },
+        { scale: withSpring(isPressed.value ? 1.05 : 1) },
       ],
       backgroundColor: isPressed.value ? 'yellow' : 'blue',
     };
   });
   return (
     <GestureDetector gesture={gesture}>
-      <Animated.View style={[styles.ball, animatedStyles]} />
+      <Animated.View style={[styles.recipeCard, animatedStyles]}>
+        <Text style={styles.receipeTitle}>Recipe Title</Text>
+      </Animated.View>
     </GestureDetector>
   );
 }
 
 const styles = StyleSheet.create({
-  ball: {
-    width: 100,
-    height: 100,
-    borderRadius: 100,
+  recipeCard: {
+    width: 300,
+    height: 600,
+    borderRadius: 30,
     backgroundColor: 'blue',
     alignSelf: 'center',
+    alignContent: 'center',
+  },
+  receipeTitle: {
+    alignSelf: 'center',
+    fontSize: 30,
+    paddingTop: 50,
   },
 });

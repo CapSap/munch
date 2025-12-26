@@ -10,7 +10,7 @@ import {
   SafeAreaProvider,
   useSafeAreaInsets,
 } from 'react-native-safe-area-context';
-import Ball from './components/rngh';
+import RecipeCard from './components/RecipeCard';
 
 function App() {
   return (
@@ -25,12 +25,7 @@ function App() {
 function AppContent() {
   return (
     <View style={styles.container}>
-      <Text>Hello friendo</Text>
-      <Ball></Ball>
-      <Text>Hello world</Text>
-      <Text>Hello world</Text>
-      <Text>Hello world</Text>
-      <Text>Hello world</Text>
+      <RecipeCard></RecipeCard>
     </View>
   );
 }
@@ -38,6 +33,7 @@ function AppContent() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: 'center',
   },
 });
 
