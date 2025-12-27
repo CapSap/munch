@@ -1,73 +1,29 @@
-import { StyleSheet, Text } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
-import { Gesture, GestureDetector } from 'react-native-gesture-handler';
-import Animated, {
-  useAnimatedStyle,
-  useSharedValue,
-  withSpring,
-} from 'react-native-reanimated';
-
-export default function RecipeCard() {
-  const isPressed = useSharedValue(false);
-  const offset = useSharedValue({ x: 0, y: 0 });
-
-  const start = useSharedValue({ x: 0, y: 0 });
-  const gesture = Gesture.Pan()
-    .onBegin(() => {
-      isPressed.value = true;
-    })
-    .onUpdate(e => {
-      offset.value = {
-        x: e.translationX + start.value.x,
-        y: e.translationY + start.value.y,
-      };
-      console.log('Offset:', offset.value.x); // This will log (but may be slow)
-    })
-    .onEnd(() => {
-      offset.value = {
-        x: 0,
-        y: 0,
-      };
-      start.value = {
-        x: 0,
-        y: 0,
-      };
-    })
-    .onFinalize(() => {
-      isPressed.value = false;
-    });
-
-  const animatedStyles = useAnimatedStyle(() => {
-    return {
-      transform: [
-        { translateX: offset.value.x },
-        { translateY: offset.value.y },
-        { scale: withSpring(isPressed.value ? 1.05 : 1) },
-      ],
-      backgroundColor: isPressed.value ? 'yellow' : 'blue',
-    };
-  });
+export default function RecipeCard(props: {
+  backgroundColour: string;
+  transform: string;
+}) {
+  console.log(props.backgroundColour);
   return (
-    <GestureDetector gesture={gesture}>
-      <Animated.View style={[styles.recipeCard, animatedStyles]}>
-        <Text style={styles.receipeTitle}>Recipe Title</Text>
-      </Animated.View>
-    </GestureDetector>
+    <View
+      style={[
+        styles.card,
+        { backgroundColor: props.backgroundColour, transform: props.transform },
+      ]}
+    >
+      <Text>card</Text>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  recipeCard: {
+  card: {
+    position: 'absolute',
     width: 300,
     height: 600,
     borderRadius: 30,
-    backgroundColor: 'blue',
     alignSelf: 'center',
     alignContent: 'center',
-  },
-  receipeTitle: {
-    alignSelf: 'center',
-    fontSize: 30,
-    paddingTop: 50,
   },
 });

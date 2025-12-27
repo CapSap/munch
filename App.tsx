@@ -10,7 +10,8 @@ import {
   SafeAreaProvider,
   useSafeAreaInsets,
 } from 'react-native-safe-area-context';
-import RecipeCard from './components/RecipeCard';
+import RecipeCard from './components/RecipeCardTop';
+import Recipes from './components/Recipes';
 
 function App() {
   return (
@@ -25,7 +26,7 @@ function App() {
 function AppContent() {
   return (
     <View style={styles.container}>
-      <RecipeCard></RecipeCard>
+      <Recipes></Recipes>
     </View>
   );
 }
