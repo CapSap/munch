@@ -11,6 +11,7 @@ import Animated, {
   useAnimatedStyle,
   useSharedValue,
   withSpring,
+  withTiming,
 } from 'react-native-reanimated';
 import {
   Gesture,
@@ -23,10 +24,10 @@ export default function RecipeCard(props: {
   backgroundColour: string;
   data: card;
   isTopCard: boolean;
+  isVisible: boolean;
   rotate: number;
-  onSwipe: () => {};
+  onSwipe: () => void;
   order: number;
-  style: StyleProp<ViewStyle>;
 }) {
   const isPressed = useSharedValue(false);
   const offset = useSharedValue({ x: 0, y: 0 });
@@ -41,17 +42,15 @@ export default function RecipeCard(props: {
             x: e.translationX,
             y: e.translationY,
           };
-          console.log('Offset:', offset.value.x); // This will log (but may be slow)
         })
         .onEnd(() => {
           if (offset.value.x < -100) {
-            console.log('trigger');
             scheduleOnRN(props.onSwipe);
+
+            offset.value = withSpring({ x: 0, y: 0 });
+          } else {
+            offset.value = withSpring({ x: 0, y: 0 });
           }
-          offset.value = {
-            x: 0,
-            y: 0,
-          };
         })
         .onFinalize(() => {
           isPressed.value = false;
@@ -68,11 +67,13 @@ export default function RecipeCard(props: {
       position: 'absolute',
       backgroundColor: isPressed.value ? 'yellow' : props.backgroundColour,
       zIndex: props.order,
+      // opacity: props.isVisible ? 1 : 0,
+      opacity: withTiming(props.isVisible ? 1 : 0, { duration: 200 }), // Smooth fade
     };
   });
   return (
     <GestureDetector gesture={gesture}>
-      <Animated.View style={[styles.recipeCard, animatedStyles, props.style]}>
+      <Animated.View style={[styles.recipeCard, animatedStyles]}>
         <Text style={styles.receipeTitle}>Title: {props.data.title}</Text>
       </Animated.View>
     </GestureDetector>
@@ -80,12 +81,9 @@ export default function RecipeCard(props: {
 }
 const styles = StyleSheet.create({
   recipeCard: {
-    // position: 'absolute',
     width: 300,
     height: 600,
     borderRadius: 30,
-    alignSelf: 'center',
-    alignContent: 'center',
   },
   receipeTitle: {
     alignSelf: 'center',

@@ -29,40 +29,44 @@ export default function Recipes() {
 
   const POSITION = [-5, 0, 5];
 
-  function swipe() {
+  function handleSwipe() {
     setIndex(prev => {
       if (prev === cards.length - 1) {
         return 0;
       } else return prev + 1;
     });
   }
+  console.log('rendering recipes', index);
   return (
-    <View>
-      <View>
-        <View style={styles.cardList}>
-          {cards.map((card, i) => {
-            const isVisible = i >= index && i < index + 3;
-            return (
-              <RecipeCard
-                key={card.id}
-                data={card}
-                backgroundColour={card.colour}
-                isTopCard={true}
-                rotate={POSITION[i % 3]}
-                order={3 - i}
-                onSwipe={swipe}
-                style={{
-                  opacity: isVisible ? 1 : 0,
-                }}
-              ></RecipeCard>
-            );
-          })}
-        </View>
-      </View>
+    <View style={styles.cardList}>
+      {cards.map((card, i) => {
+        console.log(i, index);
+        const isVisible = i >= index && i < index + 3;
+        return (
+          <RecipeCard
+            key={card.id}
+            data={card}
+            backgroundColour={card.colour}
+            // isTopCard={i === index}
+            isTopCard={true}
+            isVisible={isVisible}
+            order={cards.length - i}
+            rotate={POSITION[i % 3]}
+            onSwipe={handleSwipe}
+          ></RecipeCard>
+        );
+      })}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  cardList: {},
+  cardList: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderStyle: 'solid',
+    borderColor: 'yellow',
+    borderWidth: 2,
+  },
 });
