@@ -10,7 +10,6 @@ import {
   SafeAreaProvider,
   useSafeAreaInsets,
 } from 'react-native-safe-area-context';
-import RecipeCard from './components/RecipeCardTop';
 import Recipes from './components/Recipes';
 
 function App() {
@@ -34,7 +33,6 @@ function AppContent() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
   },
 });
 
