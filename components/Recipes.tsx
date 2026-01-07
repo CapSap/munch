@@ -13,18 +13,70 @@ export type card = {
   id: number;
   title: string;
   colour: string;
+  serves: number;
+  cookTime: number;
+  prepTime: number;
 };
 
 export default function Recipes() {
   const [index, setIndex] = useState(0);
   const cards = [
-    { id: 1, title: 'recipe 1', colour: 'green' },
-    { id: 2, title: 'recipe 2', colour: 'pink' },
-    { id: 3, title: 'recipe 3', colour: 'blue' },
-    { id: 4, title: 'recipe 4', colour: 'red' },
-    { id: 5, title: 'recipe 5', colour: 'blue' },
-    { id: 6, title: 'recipe 6', colour: 'red' },
-    { id: 7, title: 'recipe 7', colour: 'blue' },
+    {
+      id: 1,
+      title: 'recipe title',
+      colour: 'green',
+      serves: 1,
+      cookTime: 10,
+      prepTime: 10,
+    },
+    {
+      id: 2,
+      title: 'recipe 2',
+      colour: 'pink',
+      serves: 1,
+      cookTime: 10,
+      prepTime: 10,
+    },
+    {
+      id: 3,
+      title: 'recipe 3',
+      colour: 'blue',
+      serves: 1,
+      cookTime: 10,
+      prepTime: 10,
+    },
+    {
+      id: 4,
+      title: 'recipe 4',
+      colour: 'red',
+      serves: 1,
+      cookTime: 10,
+      prepTime: 10,
+    },
+    {
+      id: 5,
+      title: 'recipe 5',
+      colour: 'blue',
+      serves: 1,
+      cookTime: 10,
+      prepTime: 10,
+    },
+    {
+      id: 6,
+      title: 'recipe 6',
+      colour: 'red',
+      serves: 1,
+      cookTime: 10,
+      prepTime: 10,
+    },
+    {
+      id: 7,
+      title: 'recipe 7',
+      colour: 'blue',
+      serves: 1,
+      cookTime: 10,
+      prepTime: 10,
+    },
   ];
 
   const POSITION = [-5, 0, 5];
