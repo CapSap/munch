@@ -19,6 +19,7 @@ import {
   RectButton,
 } from 'react-native-gesture-handler';
 import { scheduleOnRN } from 'react-native-worklets';
+import { LinearGradient } from 'react-native-linear-gradient';
 
 export default function RecipeCard(props: {
   backgroundColour: string;
@@ -74,20 +75,61 @@ export default function RecipeCard(props: {
   return (
     <GestureDetector gesture={gesture}>
       <Animated.View style={[styles.recipeCard, animatedStyles]}>
-        <Text style={styles.receipeTitle}>Title: {props.data.title}</Text>
+        <View style={styles.recipeImageContainer}>
+          <LinearGradient
+            colors={['#C4C4C4', '#8A66D0']}
+            style={styles.recipeImage}
+          ></LinearGradient>
+        </View>
+        <Text style={styles.receipeTitle}>{props.data.title}</Text>
+        <Text style={styles.label}>
+          Serves: <Text style={styles.value}>{props.data.serves}</Text>
+        </Text>
+        <View style={styles.bar}></View>
+        <Text style={styles.label}>
+          Prep time: <Text style={styles.value}>{props.data.prepTime}</Text>
+        </Text>
+        <Text style={styles.label}>
+          Cook time: <Text style={styles.value}>{props.data.cookTime}</Text>
+        </Text>
+        <View>
+          <Text>asd</Text>
+        </View>
       </Animated.View>
     </GestureDetector>
   );
 }
 const styles = StyleSheet.create({
   recipeCard: {
-    width: 300,
-    height: 600,
+    width: 332,
+    height: 475,
     borderRadius: 30,
+    alignItems: 'center',
   },
   receipeTitle: {
-    alignSelf: 'center',
     fontSize: 30,
     paddingTop: 50,
+    fontFamily: 'Poppins-Regular',
+    textTransform: 'uppercase',
+  },
+  recipeImage: {
+    height: 185,
+    width: 240,
+    borderRadius: 45,
+  },
+  recipeImageContainer: {
+    marginTop: 30,
+  },
+  label: {
+    fontSize: 20,
+    fontFamily: 'SpaceGrotesk-Bold',
+  },
+  value: {
+    fontFamily: 'SpaceGrotesk-Regular',
+  },
+  bar: {
+    borderBottomWidth: 1,
+    borderStyle: 'solid',
+    width: '80%',
   },
 });
