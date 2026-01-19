@@ -1,5 +1,6 @@
 import {
   Button,
+  Pressable,
   StyleProp,
   StyleSheet,
   Text,
@@ -22,6 +23,7 @@ import { scheduleOnRN } from 'react-native-worklets';
 import { LinearGradient } from 'react-native-linear-gradient';
 import BookmarkIcon from './BookmarkIcon';
 import React from 'react';
+import NextIcon from './NextIcon';
 
 export default function RecipeCard(props: {
   backgroundColour: string;
@@ -76,6 +78,11 @@ export default function RecipeCard(props: {
       opacity: withTiming(props.isVisible ? 1 : 0, { duration: 200 }), // Smooth fade
     };
   });
+  function handlePress() {
+    console.log('ress');
+    setIsBookmarked(!isBookmarked);
+    console.log(isBookmarked);
+  }
   return (
     <GestureDetector gesture={gesture}>
       <Animated.View style={[styles.recipeCard, animatedStyles]}>
@@ -96,8 +103,11 @@ export default function RecipeCard(props: {
         <Text style={styles.label}>
           Cook time: <Text style={styles.value}>{props.data.cookTime}</Text>
         </Text>
-        <View>
-          <BookmarkIcon />
+        <View style={styles.iconContainer}>
+          <Pressable onPress={() => handlePress()}>
+            <BookmarkIcon isBookmarked={isBookmarked} />
+          </Pressable>
+          <NextIcon />
         </View>
       </Animated.View>
     </GestureDetector>
@@ -136,4 +146,8 @@ const styles = StyleSheet.create({
     borderStyle: 'solid',
     width: '80%',
   },
+  iconContainer: {
+    flexDirection: 'row',
+  },
+  iconSpacer: { flex: 1 },
 });
