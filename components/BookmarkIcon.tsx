@@ -8,8 +8,9 @@ export default function BookmarkIcon() {
         <Path
           fill="none"
           stroke="#00f"
-          strokeWidth={5}
-          d="M5 20 Q20 0 25 20 T45 20"
+          strokeWidth={3}
+          d="M12 5 H38 Q40 5 40 7 V43 Q40 45 38 45 L25 35 L12 45 Q10 45 10 43 V7 Q10 5 12 5 Z"
+          strokeLinejoin="round"
         />
       </Svg>
     </View>
@@ -18,7 +19,7 @@ export default function BookmarkIcon() {
 
 const styles = StyleSheet.create({
   container: {
-    borderWidth: 1,
+    // borderWidth: 1,
     borderColor: 'black',
   },
 });

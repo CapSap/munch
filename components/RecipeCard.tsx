@@ -20,6 +20,8 @@ import {
 } from 'react-native-gesture-handler';
 import { scheduleOnRN } from 'react-native-worklets';
 import { LinearGradient } from 'react-native-linear-gradient';
+import BookmarkIcon from './BookmarkIcon';
+import React from 'react';
 
 export default function RecipeCard(props: {
   backgroundColour: string;
@@ -32,6 +34,8 @@ export default function RecipeCard(props: {
 }) {
   const isPressed = useSharedValue(false);
   const offset = useSharedValue({ x: 0, y: 0 });
+
+  const [isBookmarked, setIsBookmarked] = React.useState(false);
 
   const gesture = props.isTopCard
     ? Gesture.Pan()
@@ -93,7 +97,7 @@ export default function RecipeCard(props: {
           Cook time: <Text style={styles.value}>{props.data.cookTime}</Text>
         </Text>
         <View>
-          <Text>asd</Text>
+          <BookmarkIcon />
         </View>
       </Animated.View>
     </GestureDetector>
