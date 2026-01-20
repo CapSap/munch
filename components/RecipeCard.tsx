@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
   },
   receipeTitle: {
     fontSize: 30,
-    paddingTop: 50,
+    paddingTop: 19,
     fontFamily: 'Poppins-Regular',
     textTransform: 'uppercase',
   },
@@ -148,6 +148,7 @@ const styles = StyleSheet.create({
   },
   iconContainer: {
     flexDirection: 'row',
+    marginTop: 25,
   },
   iconSpacer: { flex: 1 },
 });
