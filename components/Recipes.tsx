@@ -90,29 +90,35 @@ export default function Recipes() {
   }
   console.log('rendering recipes', index);
   return (
-    <View style={styles.cardList}>
-      {cards.map((card, i) => {
-        console.log(i, index);
-        const isVisible = i >= index && i < index + 3;
-        return (
-          <RecipeCard
-            key={card.id}
-            data={card}
-            backgroundColour={card.colour}
-            // isTopCard={i === index}
-            isTopCard={true}
-            isVisible={isVisible}
-            order={cards.length - i}
-            rotate={POSITION[i % 3]}
-            onSwipe={handleSwipe}
-          ></RecipeCard>
-        );
-      })}
+    <View style={styles.container}>
+      <Text>Meal Swipe</Text>
+      <View style={styles.cardList}>
+        {cards.map((card, i) => {
+          console.log(i, index);
+          const isVisible = i >= index && i < index + 3;
+          return (
+            <RecipeCard
+              key={card.id}
+              data={card}
+              backgroundColour={card.colour}
+              // isTopCard={i === index}
+              isTopCard={true}
+              isVisible={isVisible}
+              order={cards.length - i}
+              rotate={POSITION[i % 3]}
+              onSwipe={handleSwipe}
+            ></RecipeCard>
+          );
+        })}
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
   cardList: {
     flex: 1,
     justifyContent: 'center',
