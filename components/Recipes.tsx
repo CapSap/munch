@@ -79,7 +79,7 @@ export default function Recipes() {
     },
   ];
 
-  const POSITION = [-5, 0, 5];
+  const POSITION = [0, 5, -5];
 
   function handleSwipe() {
     setIndex(prev => {
