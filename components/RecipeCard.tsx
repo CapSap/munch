@@ -25,6 +25,7 @@ import BookmarkIcon from './BookmarkIcon';
 import React from 'react';
 import NextIcon from './NextIcon';
 import AddIcon from './AddIcon';
+import ShuffleIcon from './ShuffleIcon';
 
 export default function RecipeCard(props: {
   backgroundColour: string;
@@ -110,6 +111,7 @@ export default function RecipeCard(props: {
           </Pressable>
           <NextIcon />
           <AddIcon />
+          <ShuffleIcon />
         </View>
       </Animated.View>
     </GestureDetector>
