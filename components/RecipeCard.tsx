@@ -24,6 +24,7 @@ import { LinearGradient } from 'react-native-linear-gradient';
 import BookmarkIcon from './BookmarkIcon';
 import React from 'react';
 import NextIcon from './NextIcon';
+import AddIcon from './AddIcon';
 
 export default function RecipeCard(props: {
   backgroundColour: string;
@@ -108,6 +109,7 @@ export default function RecipeCard(props: {
             <BookmarkIcon isBookmarked={isBookmarked} />
           </Pressable>
           <NextIcon />
+          <AddIcon />
         </View>
       </Animated.View>
     </GestureDetector>
