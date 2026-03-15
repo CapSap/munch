@@ -110,8 +110,6 @@ export default function RecipeCard(props: {
             <BookmarkIcon isBookmarked={isBookmarked} />
           </Pressable>
           <NextIcon />
-          <AddIcon />
-          <ShuffleIcon />
         </View>
       </Animated.View>
     </GestureDetector>

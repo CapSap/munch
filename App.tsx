@@ -25,7 +25,7 @@ function App() {
 function AppContent() {
   return (
     <View style={styles.container}>
-      <Recipes></Recipes>
+      <Recipes />
     </View>
   );
 }

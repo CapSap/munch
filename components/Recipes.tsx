@@ -8,6 +8,8 @@ import {
 } from 'react-native';
 import RecipeCard from './RecipeCard';
 import { useState } from 'react';
+import AddIcon from './AddIcon';
+import ShuffleIcon from './ShuffleIcon';
 
 export type card = {
   id: number;
@@ -91,7 +93,12 @@ export default function Recipes() {
   console.log('rendering recipes', index);
   return (
     <View style={styles.container}>
-      <Text>Meal Swipe</Text>
+      <View style={styles.munchContainer}>
+        <Text>Munch logo/image</Text>
+      </View>
+      <View style={styles.headerContainer}>
+        <Text style={styles.headerText}>Meal Swipe</Text>
+      </View>
       <View style={styles.cardList}>
         {cards.map((card, i) => {
           console.log(i, index);
@@ -111,6 +118,10 @@ export default function Recipes() {
           );
         })}
       </View>
+      <View style={styles.iconContainer}>
+        <AddIcon />
+        <ShuffleIcon />
+      </View>
     </View>
   );
 }
@@ -119,6 +130,26 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  headerContainer: {
+    // width: 200,
+  },
+  munchContainer: {
+    marginTop: 37,
+    marginLeft: 25,
+    width: 314.5,
+    height: 66,
+    borderWidth: 1,
+  },
+  headerText: {
+    marginTop: 28,
+    marginLeft: 44,
+    alignSelf: 'flex-start',
+    borderRadius: 7,
+    backgroundColor: '#8A66D0',
+    color: '#FFFFFF',
+    fontSize: 36,
+    padding: 7,
+  },
   cardList: {
     flex: 1,
     justifyContent: 'center',
@@ -126,5 +157,12 @@ const styles = StyleSheet.create({
     borderStyle: 'solid',
     borderColor: 'yellow',
     borderWidth: 2,
+  },
+  iconContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginBottom: 37,
+    gap: 18,
   },
 });
