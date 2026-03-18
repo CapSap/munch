@@ -130,9 +130,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  headerContainer: {
-    // width: 200,
-  },
   munchContainer: {
     marginTop: 37,
     marginLeft: 25,
@@ -140,9 +137,11 @@ const styles = StyleSheet.create({
     height: 66,
     borderWidth: 1,
   },
-  headerText: {
-    marginTop: 28,
+  headerContainer: {
+    marginTop: 45,
     marginLeft: 44,
+  },
+  headerText: {
     alignSelf: 'flex-start',
     borderRadius: 7,
     backgroundColor: '#8A66D0',
@@ -152,7 +151,8 @@ const styles = StyleSheet.create({
   },
   cardList: {
     flex: 1,
-    justifyContent: 'center',
+    // justifyContent: 'center',
+    marginTop: 70,
     alignItems: 'center',
     borderStyle: 'solid',
     borderColor: 'yellow',
@@ -162,7 +162,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
-    marginBottom: 37,
+    marginBottom: 60,
     gap: 18,
   },
 });
