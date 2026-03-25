@@ -10,6 +10,7 @@ import RecipeCard from './RecipeCard';
 import { useState } from 'react';
 import AddIcon from './AddIcon';
 import ShuffleIcon from './ShuffleIcon';
+import { useNavigationEvent } from 'navigation-react';
 
 export type card = {
   id: number;
@@ -22,6 +23,9 @@ export type card = {
 
 export default function Recipes() {
   const [index, setIndex] = useState(0);
+  const { stateNavigator } = useNavigationEvent();
+
+  // to navigate pass an id to the details screen, and reference this object. i should move this array into its own file
   const cards = [
     {
       id: 1,
@@ -89,6 +93,7 @@ export default function Recipes() {
         return 0;
       } else return prev + 1;
     });
+    stateNavigator.navigate('detail', { size: 20 });
   }
   console.log('rendering recipes', index);
   return (

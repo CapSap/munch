@@ -11,12 +11,29 @@ import {
   useSafeAreaInsets,
 } from 'react-native-safe-area-context';
 import Recipes from './components/Recipes';
+import { StateNavigator } from 'navigation';
+import { NavigationHandler } from 'navigation-react';
+import { NavigationStack, Scene } from 'navigation-react-native';
+
+const stateNavigator = new StateNavigator([
+  { key: 'swipe' },
+  { key: 'detail', trackCrumbTrail: true },
+]);
 
 function App() {
   return (
     <GestureHandlerRootView>
       <SafeAreaProvider>
-        <AppContent />
+        <NavigationHandler stateNavigator={stateNavigator}>
+          <NavigationStack>
+            <Scene stateKey="swipe">
+              <AppContent />
+            </Scene>
+            <Scene stateKey="detail">
+              <Text style={{ alignSelf: 'center' }}>Hello</Text>
+            </Scene>
+          </NavigationStack>
+        </NavigationHandler>
       </SafeAreaProvider>
     </GestureHandlerRootView>
   );
