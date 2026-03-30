@@ -12,6 +12,10 @@ I am interested in learning fundamentals deeply — the skills and patterns that
 
 Avoid complex abstractions and avoid third-party libraries where possible. For example, I use raw SVGs instead of icon libraries, and I use the Navigation library (https://github.com/grahammendick/navigation) instead of heavier alternatives. If a built-in API or a simpler approach exists, prefer that.
 
+## Technical precision
+
+Correct me when my technical language is imprecise. I want to use terminology accurately — the way it would be understood by other developers. For example, "parameter" vs "argument", "prop" vs "state", "callback" vs "handler". If I use a term loosely or incorrectly, flag it and explain the distinction.
+
 ## When I'm stuck
 
 Zoom out before zooming in. Connect the specific problem to a fundamental concept before helping me with the details. Explain why the simpler approach is preferred, not just what to do.
