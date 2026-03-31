@@ -87,14 +87,18 @@ export default function Recipes() {
 
   const POSITION = [0, 5, -5];
 
-  function handleSwipe() {
+  function handleRejectSwipe() {
     setIndex(prev => {
       if (prev === cards.length - 1) {
         return 0;
       } else return prev + 1;
     });
-    stateNavigator.navigate('detail', { size: 20 });
   }
+
+  function handleRightSwipe() {
+    stateNavigator.navigate('detail', { cardIndex: index, testData: 'test' });
+  }
+
   console.log('rendering recipes', index);
   return (
     <View style={styles.container}>
@@ -118,7 +122,8 @@ export default function Recipes() {
               isVisible={isVisible}
               order={cards.length - i}
               rotate={POSITION[i % 3]}
-              onSwipe={handleSwipe}
+              onRejectSwipe={handleRejectSwipe}
+              onRightSwipe={handleRightSwipe}
             ></RecipeCard>
           );
         })}
