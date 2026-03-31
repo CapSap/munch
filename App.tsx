@@ -12,8 +12,9 @@ import {
 } from 'react-native-safe-area-context';
 import Recipes from './components/Recipes';
 import { StateNavigator } from 'navigation';
-import { NavigationHandler } from 'navigation-react';
+import { NavigationHandler, useNavigationEvent } from 'navigation-react';
 import { NavigationStack, Scene } from 'navigation-react-native';
+import RecipeDetails from './components/ReceipeDetails';
 
 const stateNavigator = new StateNavigator([
   { key: 'swipe' },
@@ -21,16 +22,17 @@ const stateNavigator = new StateNavigator([
 ]);
 
 function App() {
+  const { data } = useNavigationEvent();
   return (
     <GestureHandlerRootView>
       <SafeAreaProvider>
         <NavigationHandler stateNavigator={stateNavigator}>
           <NavigationStack>
             <Scene stateKey="swipe">
-              <AppContent />
+              <Recipes />
             </Scene>
             <Scene stateKey="detail">
-              <Text style={{ alignSelf: 'center' }}>Hello</Text>
+              <RecipeDetails />
             </Scene>
           </NavigationStack>
         </NavigationHandler>
@@ -38,19 +40,5 @@ function App() {
     </GestureHandlerRootView>
   );
 }
-
-function AppContent() {
-  return (
-    <View style={styles.container}>
-      <Recipes />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
 
 export default App;
