@@ -37,7 +37,7 @@ export default function Recipes() {
   }
 
   function handleRightSwipe(id: number) {
-    stateNavigator.navigate('detail', { cardId: id, testData: 'test' });
+    stateNavigator.navigate('detail', { cardId: id });
   }
 
   console.log('rendering recipes', index);
