@@ -95,8 +95,8 @@ export default function Recipes() {
     });
   }
 
-  function handleRightSwipe() {
-    stateNavigator.navigate('detail', { cardIndex: index, testData: 'test' });
+  function handleRightSwipe(id: number) {
+    stateNavigator.navigate('detail', { cardId: id, testData: 'test' });
   }
 
   console.log('rendering recipes', index);

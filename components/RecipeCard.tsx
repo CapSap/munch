@@ -34,7 +34,7 @@ export default function RecipeCard(props: {
   isVisible: boolean;
   rotate: number;
   onRejectSwipe: () => void;
-  onRightSwipe: () => void;
+  onRightSwipe: (id: number) => void;
   order: number;
 }) {
   const isPressed = useSharedValue(false);
@@ -59,7 +59,7 @@ export default function RecipeCard(props: {
 
             offset.value = withSpring({ x: 0, y: 0 });
           } else if (offset.value.x > 100) {
-            scheduleOnRN(props.onRightSwipe);
+            scheduleOnRN(props.onRightSwipe, props.data.id);
           } else {
             offset.value = withSpring({ x: 0, y: 0 });
           }
