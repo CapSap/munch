@@ -5,7 +5,7 @@ export default function RecipeDetails() {
   const { data } = useNavigationEvent();
   return (
     <View>
-      <Text style={styles.text}>details{data.cardIndex}</Text>
+      <Text style={styles.text}>details{data.cardId}</Text>
     </View>
   );
 }
