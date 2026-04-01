@@ -22,7 +22,6 @@ const stateNavigator = new StateNavigator([
 ]);
 
 function App() {
-  const { data } = useNavigationEvent();
   return (
     <GestureHandlerRootView>
       <SafeAreaProvider>
