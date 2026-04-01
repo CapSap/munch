@@ -11,6 +11,7 @@ import { useState } from 'react';
 import AddIcon from './AddIcon';
 import ShuffleIcon from './ShuffleIcon';
 import { useNavigationEvent } from 'navigation-react';
+import { cards } from '../assets/data';
 
 export type card = {
   id: number;
@@ -24,66 +25,6 @@ export type card = {
 export default function Recipes() {
   const [index, setIndex] = useState(0);
   const { stateNavigator } = useNavigationEvent();
-
-  // to navigate pass an id to the details screen, and reference this object. i should move this array into its own file
-  const cards = [
-    {
-      id: 1,
-      title: 'recipe title',
-      colour: 'green',
-      serves: 1,
-      cookTime: 10,
-      prepTime: 10,
-    },
-    {
-      id: 2,
-      title: 'recipe 2',
-      colour: 'pink',
-      serves: 1,
-      cookTime: 10,
-      prepTime: 10,
-    },
-    {
-      id: 3,
-      title: 'recipe 3',
-      colour: 'blue',
-      serves: 1,
-      cookTime: 10,
-      prepTime: 10,
-    },
-    {
-      id: 4,
-      title: 'recipe 4',
-      colour: 'red',
-      serves: 1,
-      cookTime: 10,
-      prepTime: 10,
-    },
-    {
-      id: 5,
-      title: 'recipe 5',
-      colour: 'blue',
-      serves: 1,
-      cookTime: 10,
-      prepTime: 10,
-    },
-    {
-      id: 6,
-      title: 'recipe 6',
-      colour: 'red',
-      serves: 1,
-      cookTime: 10,
-      prepTime: 10,
-    },
-    {
-      id: 7,
-      title: 'recipe 7',
-      colour: 'blue',
-      serves: 1,
-      cookTime: 10,
-      prepTime: 10,
-    },
-  ];
 
   const POSITION = [0, 5, -5];
 

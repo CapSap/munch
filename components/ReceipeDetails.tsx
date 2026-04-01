@@ -1,5 +1,6 @@
 import { useNavigationEvent } from 'navigation-react';
 import { StyleSheet, Text, View } from 'react-native';
+import { cards } from '../assets/data';
 
 export default function RecipeDetails() {
   const { data } = useNavigationEvent();
