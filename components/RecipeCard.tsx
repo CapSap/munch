@@ -60,6 +60,7 @@ export default function RecipeCard(props: {
             offset.value = withSpring({ x: 0, y: 0 });
           } else if (offset.value.x > 100) {
             scheduleOnRN(props.onRightSwipe, props.data.id);
+            offset.value = withSpring({ x: 0, y: 0 });
           } else {
             offset.value = withSpring({ x: 0, y: 0 });
           }
