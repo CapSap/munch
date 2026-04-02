@@ -10,6 +10,9 @@ import RecipeCard from './RecipeCard';
 import { useState } from 'react';
 import AddIcon from './AddIcon';
 import ShuffleIcon from './ShuffleIcon';
+import { NavigationEvent, useNavigationEvent } from 'navigation-react';
+import { cards } from '../assets/data';
+import { RecipeNavigator } from './Types';
 
 export type card = {
   id: number;
@@ -22,74 +25,23 @@ export type card = {
 
 export default function Recipes() {
   const [index, setIndex] = useState(0);
-  const cards = [
-    {
-      id: 1,
-      title: 'recipe title',
-      colour: 'green',
-      serves: 1,
-      cookTime: 10,
-      prepTime: 10,
-    },
-    {
-      id: 2,
-      title: 'recipe 2',
-      colour: 'pink',
-      serves: 1,
-      cookTime: 10,
-      prepTime: 10,
-    },
-    {
-      id: 3,
-      title: 'recipe 3',
-      colour: 'blue',
-      serves: 1,
-      cookTime: 10,
-      prepTime: 10,
-    },
-    {
-      id: 4,
-      title: 'recipe 4',
-      colour: 'red',
-      serves: 1,
-      cookTime: 10,
-      prepTime: 10,
-    },
-    {
-      id: 5,
-      title: 'recipe 5',
-      colour: 'blue',
-      serves: 1,
-      cookTime: 10,
-      prepTime: 10,
-    },
-    {
-      id: 6,
-      title: 'recipe 6',
-      colour: 'red',
-      serves: 1,
-      cookTime: 10,
-      prepTime: 10,
-    },
-    {
-      id: 7,
-      title: 'recipe 7',
-      colour: 'blue',
-      serves: 1,
-      cookTime: 10,
-      prepTime: 10,
-    },
-  ];
+
+  const { stateNavigator } = useNavigationEvent<RecipeNavigator>();
 
   const POSITION = [0, 5, -5];
 
-  function handleSwipe() {
+  function handleRejectSwipe() {
     setIndex(prev => {
       if (prev === cards.length - 1) {
         return 0;
       } else return prev + 1;
     });
   }
+
+  function handleRightSwipe(id: number) {
+    stateNavigator.navigate('detail', { cardId: id });
+  }
+
   console.log('rendering recipes', index);
   return (
     <View style={styles.container}>
@@ -113,7 +65,8 @@ export default function Recipes() {
               isVisible={isVisible}
               order={cards.length - i}
               rotate={POSITION[i % 3]}
-              onSwipe={handleSwipe}
+              onRejectSwipe={handleRejectSwipe}
+              onRightSwipe={handleRightSwipe}
             ></RecipeCard>
           );
         })}
