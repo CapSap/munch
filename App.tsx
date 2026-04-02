@@ -15,8 +15,9 @@ import { StateNavigator } from 'navigation';
 import { NavigationHandler, useNavigationEvent } from 'navigation-react';
 import { NavigationStack, Scene } from 'navigation-react-native';
 import RecipeDetails from './components/ReceipeDetails';
+import { RecipeNavigator } from './components/Types';
 
-const stateNavigator = new StateNavigator([
+const stateNavigator = new StateNavigator<RecipeNavigator>([
   { key: 'swipe' },
   { key: 'detail', trackCrumbTrail: true },
 ]);

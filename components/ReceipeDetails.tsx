@@ -1,9 +1,10 @@
 import { useNavigationEvent } from 'navigation-react';
 import { StyleSheet, Text, View } from 'react-native';
 import { cards } from '../assets/data';
+import { RecipeNavigator } from './Types';
 
 export default function RecipeDetails() {
-  const { data } = useNavigationEvent();
+  const { data } = useNavigationEvent<RecipeNavigator, 'detail'>();
 
   const card = cards.find(c => c.id === data.cardId);
 

@@ -10,8 +10,9 @@ import RecipeCard from './RecipeCard';
 import { useState } from 'react';
 import AddIcon from './AddIcon';
 import ShuffleIcon from './ShuffleIcon';
-import { useNavigationEvent } from 'navigation-react';
+import { NavigationEvent, useNavigationEvent } from 'navigation-react';
 import { cards } from '../assets/data';
+import { RecipeNavigator } from './Types';
 
 export type card = {
   id: number;
@@ -24,7 +25,8 @@ export type card = {
 
 export default function Recipes() {
   const [index, setIndex] = useState(0);
-  const { stateNavigator } = useNavigationEvent();
+
+  const { stateNavigator } = useNavigationEvent<RecipeNavigator>();
 
   const POSITION = [0, 5, -5];
 
