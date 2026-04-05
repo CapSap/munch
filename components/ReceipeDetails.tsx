@@ -9,6 +9,14 @@ export default function RecipeDetails() {
 
   const card = cards.find(c => c.id === data.cardId);
 
+  if (!card) {
+    return (
+      <View>
+        <Text>Card not found</Text>
+      </View>
+    );
+  }
+
   return (
     <View style={styles.container}>
       <MunchLogo />
@@ -19,11 +27,10 @@ export default function RecipeDetails() {
         <View style={styles.receipeImage}>
           <Text style={{ alignSelf: 'center' }}>image placeholder</Text>
         </View>
-
-        <Text style={styles.receipeTitle}>
-          card id from navigation: {data.cardId}
+        <Text style={styles.receipeTitle}>{card.title}</Text>
+        <Text style={styles.subheadingLabel}>
+          Serves: <Text style={styles.subheadingValue}>{card.serves}</Text>
         </Text>
-        <Text style={styles.receipeTitle}>{card?.title}</Text>
       </View>
     </View>
   );
@@ -57,6 +64,7 @@ const styles = StyleSheet.create({
   },
   receipeDetailContainer: {
     borderWidth: 1,
+    alignItems: 'center',
   },
   receipeImage: {
     borderWidth: 1,
@@ -67,5 +75,18 @@ const styles = StyleSheet.create({
     borderRadius: 45,
     justifyContent: 'center',
   },
-  receipeTitle: {},
+  receipeTitle: {
+    fontSize: 28,
+    color: '#CDCDCD',
+    fontWeight: 600,
+    textTransform: 'uppercase',
+  },
+  subheadingLabel: {
+    fontWeight: '700',
+    fontSize: 20,
+  },
+  subheadingValue: {
+    fontWeight: 400,
+    color: '#cdcdcd',
+  },
 });
