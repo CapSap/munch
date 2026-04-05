@@ -1,5 +1,5 @@
 import { useNavigationEvent } from 'navigation-react';
-import { StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { cards } from '../assets/data';
 import { RecipeNavigator } from './Types';
 import MunchLogo from './MunchLogo';
@@ -7,7 +7,8 @@ import MunchLogo from './MunchLogo';
 export default function RecipeDetails() {
   const { data } = useNavigationEvent<RecipeNavigator, 'detail'>();
 
-  const card = cards.find(c => c.id === data.cardId);
+  // const card = cards.find(c => c.id === data.cardId);
+  const card = cards.find(c => c.id === 1);
 
   if (!card) {
     return (
@@ -18,7 +19,7 @@ export default function RecipeDetails() {
   }
 
   return (
-    <View style={styles.container}>
+    <ScrollView>
       <MunchLogo />
       <View style={styles.headerContainer}>
         <Text style={styles.headerText}>+ Recipe Card</Text>
@@ -29,17 +30,51 @@ export default function RecipeDetails() {
         </View>
         <Text style={styles.receipeTitle}>{card.title}</Text>
         <Text style={styles.subheadingLabel}>
-          Serves: <Text style={styles.subheadingValue}>{card.serves}</Text>
+          Serves:{' '}
+          <Text style={styles.subheadingValue}>{card.serves} person</Text>
         </Text>
+        <View style={styles.bar}></View>
+        <Text style={styles.subheadingLabel}>
+          Prep time:{' '}
+          <Text style={styles.subheadingValue}>{card.prepTime} minutes</Text>
+        </Text>
+
+        <Text style={styles.subheadingLabel}>
+          Cook time:{' '}
+          <Text style={styles.subheadingValue}>{card.cookTime} minutes</Text>
+        </Text>
+        <View style={styles.notesContainer}>
+          <Text style={styles.notesText}>[Optional] Notes: x</Text>
+        </View>
+        <Text style={styles.bodySubheadingLabel}>Ingredients</Text>
+        <View style={styles.instructionsTextContainer}>
+          <Text style={styles.bodyText}>1 onion - sliced</Text>
+          <Text style={styles.bodyText}>90 ml oil (veg or olive)</Text>
+          <Text style={styles.bodyText}>30ml oyster sauce</Text>
+        </View>
+        <Text style={styles.instructionsAddButon}>+ Ingredient</Text>
+        <Text style={styles.bodySubheadingLabel}>Instructions</Text>
+        <View style={styles.instructionItemContainer}>
+          <View style={styles.instructionItemTextContainer}>
+            <View style={styles.instructionItemNumber}>
+              <Text style={styles.instructionItemNumberText}>1</Text>
+            </View>
+            <Text style={styles.instructionsTextBody}>
+              Heat 2 tbsp of oil in wok over medium heat. Add onion and garlic.
+            </Text>
+          </View>
+          <View style={styles.instructionImage}>
+            <Text>placeholder image</Text>
+          </View>
+        </View>
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
   },
   text: {
     alignSelf: 'center',
@@ -65,12 +100,17 @@ const styles = StyleSheet.create({
   receipeDetailContainer: {
     borderWidth: 1,
     alignItems: 'center',
+    marginLeft: 30,
+    marginRight: 30,
+    borderRadius: 45,
+    marginTop: 50,
   },
   receipeImage: {
     borderWidth: 1,
     marginTop: 26,
     marginLeft: 45,
     marginRight: 45,
+    marginBottom: 23,
     height: 185,
     borderRadius: 45,
     justifyContent: 'center',
@@ -80,6 +120,7 @@ const styles = StyleSheet.create({
     color: '#CDCDCD',
     fontWeight: 600,
     textTransform: 'uppercase',
+    marginBottom: 20,
   },
   subheadingLabel: {
     fontWeight: '700',
@@ -88,5 +129,77 @@ const styles = StyleSheet.create({
   subheadingValue: {
     fontWeight: 400,
     color: '#cdcdcd',
+  },
+  bar: {
+    borderBottomWidth: 1,
+    width: 239,
+    marginTop: 10,
+    marginBottom: 10,
+  },
+  notesContainer: {
+    height: 107,
+    width: 240,
+    borderRadius: 20,
+    // backgroundColor: '#f3f3f3',
+    backgroundColor: 'red',
+    alignItems: 'center',
+    marginTop: 30,
+    marginBottom: 34,
+  },
+  notesText: {
+    marginTop: 12,
+    color: '#cdcdcd',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  instructionsTextContainer: {
+    gap: 16,
+    width: '60%',
+  },
+  bodyText: {
+    fontSize: 18,
+    color: '#CDCDCD',
+  },
+  instructionsAddButon: {
+    fontSize: 18,
+    color: '#CDCDCD',
+    marginTop: 25,
+    marginBottom: 50,
+  },
+  bodySubheadingLabel: {
+    fontWeight: '700',
+    fontSize: 20,
+    marginBottom: 16,
+  },
+  instructionItemContainer: { width: '100%', marginBottom: 36 },
+  instructionItemTextContainer: {
+    flexDirection: 'row',
+    marginLeft: 16,
+    marginRight: 44,
+    gap: 16,
+    marginBottom: 15,
+  },
+  instructionItemNumber: {
+    backgroundColor: '#8A66D0',
+    borderRadius: 25,
+    width: 25,
+    height: 25,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  instructionItemNumberText: { color: 'white', fontSize: 18, fontWeight: 600 },
+  instructionImage: {
+    height: 69,
+    width: 229,
+    borderWidth: 1,
+    borderRadius: 20,
+    alignSelf: 'center',
+  },
+
+  instructionsTextBody: {
+    fontSize: 18,
+    color: '#CDCDCD',
+    width: 229,
+    fontWeight: 400,
   },
 });
