@@ -12,13 +12,19 @@ export default function RecipeDetails() {
   return (
     <View style={styles.container}>
       <MunchLogo />
-
       <View style={styles.headerContainer}>
         <Text style={styles.headerText}>+ Recipe Card</Text>
       </View>
+      <View style={styles.receipeDetailContainer}>
+        <View style={styles.receipeImage}>
+          <Text style={{ alignSelf: 'center' }}>image placeholder</Text>
+        </View>
 
-      <Text style={styles.text}>card id from navigation: {data.cardId}</Text>
-      <Text style={styles.text}>title: {card?.title}</Text>
+        <Text style={styles.receipeTitle}>
+          card id from navigation: {data.cardId}
+        </Text>
+        <Text style={styles.receipeTitle}>{card?.title}</Text>
+      </View>
     </View>
   );
 }
@@ -49,4 +55,17 @@ const styles = StyleSheet.create({
     paddingLeft: 27,
     paddingRight: 27,
   },
+  receipeDetailContainer: {
+    borderWidth: 1,
+  },
+  receipeImage: {
+    borderWidth: 1,
+    marginTop: 26,
+    marginLeft: 45,
+    marginRight: 45,
+    height: 185,
+    borderRadius: 45,
+    justifyContent: 'center',
+  },
+  receipeTitle: {},
 });
