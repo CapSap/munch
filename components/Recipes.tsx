@@ -13,6 +13,7 @@ import ShuffleIcon from './ShuffleIcon';
 import { NavigationEvent, useNavigationEvent } from 'navigation-react';
 import { cards } from '../assets/data';
 import { RecipeNavigator } from './Types';
+import MunchLogo from './MunchLogo';
 
 export type card = {
   id: number;
@@ -45,9 +46,7 @@ export default function Recipes() {
   console.log('rendering recipes', index);
   return (
     <View style={styles.container}>
-      <View style={styles.munchContainer}>
-        <Text>Munch logo/image</Text>
-      </View>
+      <MunchLogo />
       <View style={styles.headerContainer}>
         <Text style={styles.headerText}>Meal Swipe</Text>
       </View>
