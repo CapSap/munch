@@ -7,6 +7,24 @@ import MunchLogo from './MunchLogo';
 export default function RecipeDetails() {
   const { data } = useNavigationEvent<RecipeNavigator, 'detail'>();
 
+  const instructions = [
+    {
+      id: 1,
+      instruct:
+        'Heat 2 tbsp of oil in wok over medium heat. Add onion and garlic.',
+    },
+    {
+      id: 2,
+      instruct:
+        'Add in the protein and chopped veggies. Stir until everything is fragrant.',
+    },
+    {
+      id: 3,
+      instruct:
+        'Add in oyster sauce and chilli flakes. Sprinkle a bit of sugar and salt as needed.',
+    },
+  ];
+
   // const card = cards.find(c => c.id === data.cardId);
   const card = cards.find(c => c.id === 1);
 
@@ -54,19 +72,24 @@ export default function RecipeDetails() {
         </View>
         <Text style={styles.instructionsAddButon}>+ Ingredient</Text>
         <Text style={styles.bodySubheadingLabel}>Instructions</Text>
-        <View style={styles.instructionItemContainer}>
-          <View style={styles.instructionItemTextContainer}>
-            <View style={styles.instructionItemNumber}>
-              <Text style={styles.instructionItemNumberText}>1</Text>
+
+        {instructions.map((item, index) => {
+          return (
+            <View key={item.id} style={styles.instructionItemContainer}>
+              <View style={styles.instructionItemTextContainer}>
+                <View style={styles.instructionItemNumber}>
+                  <Text style={styles.instructionItemNumberText}>
+                    {index + 1}
+                  </Text>
+                </View>
+                <Text style={styles.instructionsTextBody}>{item.instruct}</Text>
+              </View>
+              <View style={styles.instructionImage}>
+                <Text>placeholder image</Text>
+              </View>
             </View>
-            <Text style={styles.instructionsTextBody}>
-              Heat 2 tbsp of oil in wok over medium heat. Add onion and garlic.
-            </Text>
-          </View>
-          <View style={styles.instructionImage}>
-            <Text>placeholder image</Text>
-          </View>
-        </View>
+          );
+        })}
       </View>
     </ScrollView>
   );
