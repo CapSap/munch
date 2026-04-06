@@ -90,6 +90,12 @@ export default function RecipeDetails() {
             </View>
           );
         })}
+
+        <Text style={styles.instructionsAddButon}>+ Next step</Text>
+        <View style={styles.bottomButtonsContainer}>
+          <Text style={styles.discardButton}>Discard</Text>
+          <Text style={styles.publishButton}>Publish</Text>
+        </View>
       </View>
     </ScrollView>
   );
@@ -224,5 +230,26 @@ const styles = StyleSheet.create({
     color: '#CDCDCD',
     width: 229,
     fontWeight: 400,
+  },
+  bottomButtonsContainer: { flexDirection: 'row', gap: 86, marginBottom: 60 },
+  discardButton: {
+    borderWidth: 1,
+    padding: 7,
+    borderRadius: 10,
+    fontSize: 20,
+    paddingLeft: 10,
+    paddingRight: 10,
+    backgroundColor: '#787878',
+    color: '#FFFFFF',
+  },
+  publishButton: {
+    borderWidth: 1,
+    padding: 7,
+    borderRadius: 10,
+    fontSize: 20,
+    paddingLeft: 10,
+    paddingRight: 10,
+    backgroundColor: '#8A66D0',
+    color: '#FFFFFF',
   },
 });
