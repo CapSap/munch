@@ -28,11 +28,11 @@ function App() {
       <SafeAreaProvider>
         <NavigationHandler stateNavigator={stateNavigator}>
           <NavigationStack>
-            <Scene stateKey="swipe">
-              <Recipes />
-            </Scene>
             <Scene stateKey="detail">
               <RecipeDetails />
+            </Scene>
+            <Scene stateKey="swipe">
+              <Recipes />
             </Scene>
           </NavigationStack>
         </NavigationHandler>
